@@ -1,7 +1,18 @@
 class Solution {
-    public boolean isPalindrome(String s) {        //Without 2 pointer technique
+    public boolean isPalindrome(String s) {        //With using 2 pointer
         s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
-        String reversed = new StringBuilder(s).reverse().toString();
-        return s.equals(reversed);
+        int i = 0;
+        int j = s.length() - 1;
+
+        while(i < j)
+        {
+            if(s.charAt(i) != s.charAt(j))
+            {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
     }
 }
