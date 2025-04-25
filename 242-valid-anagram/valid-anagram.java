@@ -8,12 +8,25 @@ class Solution {
             return false;
         }
 
-        String[] arrS = s.split("");
-        String[] arrT = t.split("");
+        int[] count = new int[26];
 
-        Arrays.sort(arrS);
-        Arrays.sort(arrT);
+        for(int i = 0; i < s.length(); i++)
+        {
+            count[s.charAt(i) - 'a']++;
+        }
+        
+        for(int i = 0; i < t.length(); i++)
+        {
+            count[t.charAt(i) - 'a']--;
+        }
 
-        return Arrays.equals(arrS, arrT);
+        for(int c : count)
+        {
+            if(c != 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
