@@ -11,13 +11,10 @@ class Solution {
         while(left < right)
         {
             while(left < right && !vowels.contains(chars[left]))
-            {
-                left++;
-            }
+            left++;
+
             while(left < right && !vowels.contains(chars[right]))
-            {
-                right--;
-            }
+            right--;
 
             char temp = chars[left];
             chars[left] = chars[right];
