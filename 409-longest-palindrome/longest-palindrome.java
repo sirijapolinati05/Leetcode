@@ -2,8 +2,10 @@ class Solution {
     public int longestPalindrome(String s) {
         Map<Character, Integer> count = new HashMap();
         for(char ch: s.toCharArray())
+        {
             count.put(ch, count.getOrDefault(ch, 0) + 1);
-        
+        }      
+          
         int result = 0;
         boolean odd_found = false;
         for(int ch: count.values())
