@@ -1,15 +1,15 @@
 class Solution {
     public int countSegments(String s) {
-        int count = 0;
-        int segments = s.length();
+        s = s.trim();
 
-        for(int i = 0; i < segments; i++)
+        if(s == null || s.length() == 0)
         {
-            if(s.charAt(i) != ' ' && (i == 0 || s.charAt(i - 1) == ' '))
-            {
-                count++;
-            }
+            return 0;
         }
-        return count;
+
+      
+
+        String[] segments = s.split("\\s+");
+        return segments.length;
     }
 }
