@@ -5,15 +5,13 @@ class Solution {
             return n;
         }
 
-        int[] map = new int[n + 1];
-
-        map[0] = 0;
-        map[1] = 1;
-
+        int a = 0, b = 1;
         for(int i = 2; i <= n; i++)
         {
-            map[i] = map[i - 1] + map[i - 2];
+            int temp = a + b;
+            a = b;
+            b = temp;
         }
-        return map[n];
+        return b;
     }
 }
