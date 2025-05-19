@@ -2,20 +2,12 @@ import java.util.HashMap;
 
 class Solution {
     public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int singleNum = nums[0];
 
-        // Step 1: Count frequency of each number
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+        for(int i = 1; i < nums.length; i++)
+        {
+            singleNum = singleNum ^ nums[i];
         }
-
-        // Step 2: Find the number with count == 1
-        for (int key : map.keySet()) {
-            if (map.get(key) == 1) {
-                return key;
-            }
-        }
-
-        return -1; 
+        return singleNum;
     }
 }
