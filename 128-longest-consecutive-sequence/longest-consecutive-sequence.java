@@ -1,29 +1,37 @@
-import java.util.Arrays;
-
 class Solution {
     public int longestConsecutive(int[] nums) {
-        if (nums.length == 0) 
-        {
-            return 0;
+        int longestLength = 0;
+        Map<Integer, Boolean> exploreMap = new HashMap<>();
+
+        for (int num : nums) {
+            exploreMap.put(num, false);
         }
 
-        Arrays.sort(nums);
-
-        int longest = 1;
-        int currentLength = 1;
-
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1]) {
+        for (int num : nums) {
+            if (exploreMap.get(num)) {
                 continue;
             }
-            else if (nums[i] == nums[i - 1] + 1) {
+
+            int currentLength = 1;
+            exploreMap.put(num, true);
+
+            int nextNum = num + 1;
+            while (exploreMap.containsKey(nextNum) && !exploreMap.get(nextNum)) {
+                exploreMap.put(nextNum, true);
                 currentLength++;
-            } 
-            else {
-                longest = Math.max(longest, currentLength);
-                currentLength = 1;
+                nextNum++;
             }
+
+            int prevNum = num - 1;
+            while (exploreMap.containsKey(prevNum) && !exploreMap.get(prevNum)) {
+                exploreMap.put(prevNum, true);
+                currentLength++;
+                prevNum--;
+            }
+
+            longestLength = Math.max(longestLength, currentLength);
         }
-        return Math.max(longest, currentLength);
+
+        return longestLength;
     }
 }
