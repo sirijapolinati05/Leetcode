@@ -5,5 +5,5 @@ SELECT
     Address.city,
     Address.state
 FROM Person
-LEFT OUTER JOIN Address 
+LEFT JOIN Address 
 ON Person.personId = Address.personId;
