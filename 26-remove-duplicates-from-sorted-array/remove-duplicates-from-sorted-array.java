@@ -4,9 +4,9 @@ class Solution {
         {
             return 0;
         }
-
-        int i = 0; 
-        for(int j = i + 1; j < nums.length; j++)
+        
+        int i = 0;
+        for(int j = 0; j < nums.length; j++)
         {
             if(nums[i] != nums[j])
             {
